@@ -1,0 +1,79 @@
+<html>
+	<body>
+		<style>
+			body {
+				background-color: #4863A0;
+				font-family: "Helvetica";
+				font-weight: lighter;
+				columns: 2;
+				padding: 24px;
+			}
+			
+			font {
+				color: white;
+			}
+
+			a {
+				color: white;
+			}
+		</style>
+		<font>
+			Wasted means: ran less than the TOLERANCE<br>
+			0 is false | 1 is true | 0+1 = total instances in that query<br><br>
+			<a href=/current>/current</a> - All instances running right now<br>
+			<a href=/current>/current/json</a><br>
+			<br>
+			<a href=/all>/all</a> - all instances created today<br>
+			<a href=/all/json>/all/json</a><br>
+			<a href=/spot>/spot</a> - all spot instances created today<br>
+			<a href=/spot/json>/spot/json</a><br>
+			<a href=/wasted>/wasted</a> - all wasted instances today<br>
+			<a href=/wasted/json>/wasted/json</a><br>
+			<a href=/spot/wasted>/spot/wasted</a> - all spot wasted instances today (0+1 = total spots)<br>
+			<a href=/spot/wasted/json>/spot/wasted/json</a><br>
+			<a href=/wasted/spot>/wasted/spot</a> all spot wasted instances today (0+1 = total wasted)<br>
+			<a href=/wasted/spot/json>/wasted/spot/json</a><br>
+			<br>
+			<a href=/region>/region</a> - all instances created today by region<br>
+			<a href=/region/json>/region/json</a><br>
+			<a href=/region/spot>/region/spot</a> - all spot instances created today by region<br>
+			<a href=/region/spot/json>/region/spot/json</a><br>
+			<a href=/region/wasted>/region/wasted</a> - all wasted instances create today by region<br>
+			<a href=/region/wasted/json>/region/wasted/json</a><br>
+			<br>
+			<a href=/app>/app</a> - all instances created today by App<br>
+			<a href=/app/json>/app/json</a><br>
+			<a href=/app/spot>/app/spot</a> - all spot instances created today by App<br>
+			<a href=/app/spot/json>/app/spot/json</a><br>
+			<a href=/app/wasted>/app/wasted</a> - all wasted instances created today by App<br>
+			<a href=/app/wasted/json>/app/wasted/json</a><br>
+			<br>
+			<a href=/product>/product</a> - all instances created today by Product<br>
+			<a href=/product/json>/product/json</a><br>
+			<a href=/product/spot>/product/spot</a> - all spot instances created today by Product<br>
+			<a href=/product/spot/json>/product/spot/json</a></br>
+			<a href=/product/wasted>/product/wasted</a> - all wasted instances created today by Product<br>
+			<a href=/product/wasted/json>/product/wasted/json</a><br>
+			<br>
+			<a href=/env>/env</a> - all instances created today by Environment<br>
+			<a href=/env/json>/env/json</a><br>
+			<a href=/env/spot>/env/spot</a> - all spot instances created today by Environment<br>
+			<a href=/env/spot/json>/env/spot/json</a><br>
+			<a href=/env/wasted>/env/wasted</a> - all wasted instances created today by Environment<br>
+			<a href=/env/wasted/json>/env/wasted/json</a><br>
+			<br>
+			<a href=/type>/type</a> - all instances created today by Type<br>
+			<a href=/type/json>/type/json</a><br>
+			<a href=/type/spot>/type/spot</a> - all spot instances created today by Type<br>
+			<a href=/type/spot/json>/type/spot/json</a><br>
+			<a href=/type/wasted>/type/wasted</a> - all wasted instances created today by Type<br>
+			<a href=/type/wasted/json>/type/wasted/json</a><br>
+			<br>
+			<a href=/alerts>/alerts</a> - all wasted instances in last 20 minutes<br>
+			<a href=/alerts/json>/alerts/json</a><br>
+			<a href=/alerts/asg>/alerts/asg</a> - all wasted instances in last 20 minutes by ASG<br>
+			<a href=/alerts/asg/json>/alerts/asg/json</a>
+		</font>
+	</body>
+</html>
+
