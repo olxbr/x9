@@ -1,0 +1,8 @@
+x9
+.DS_Store
+vendor
+*.orig
+.*.sw[po]
+.cover
+dump.rdb
+main
