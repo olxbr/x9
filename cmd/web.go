@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// Web will start the Web Server and keeps listen for requests.
 func Web() {
 	fmt.Printf("%v - [Starting web]\n", time.Now())
 	go getInstances()

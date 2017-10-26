@@ -14,6 +14,7 @@ import (
 	"time"
 )
 
+// Instance is the object that holds all configurations about a AWS instance.
 type Instance struct {
 	Region          string
 	Env             string
