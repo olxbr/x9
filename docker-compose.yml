@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  # X9
+  x9:
+    build: ./
+    image: "${DOCKER_REPO}/x9:${DOCKER_IMAGE_VERSION}"
+    volumes:
+      - .:/go/src/github.com/vivareal/x9
+    environment:
+      - REDIS_SERVER='redis:6379'
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - SLACK_WEBHOOK_URL
+    ports:
+    - '6969:6969'
+    depends_on:
+      - redis
+
+  # Redis Database
+  redis:
+    image: redis
+    ports:
+    - '6379'
+
