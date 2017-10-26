@@ -1,4 +1,4 @@
-package cmd
+package pkg
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ import (
 )
 
 func sendAlert(messageJson string) {
-	URL := getOptEnv("SLACK_WEBHOOK_URL", "error")
+	URL := SLACK_BOT_URL
 	if strings.HasPrefix(URL, "http") {
 		client := http.Client{}
 		req, _ := http.NewRequest("POST", URL, bytes.NewBufferString(messageJson))
@@ -30,7 +30,7 @@ func alertSlack() {
 	fmt.Printf("%v - [Check alerts]\n", time.Now())
 	// connect redis
 	rc := redis.NewClient(&redis.Options{
-		Addr:     getOptEnv("REDIS_SERVER", "localhost:6379"),
+		Addr:     REDIS_SERVER,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
@@ -49,6 +49,6 @@ func alertSlack() {
 
 		}
 
-		sendAlert("Warning: " + strconv.FormatFloat(qtd, 'f', 0, 64) + " instances terminated before " + getOptEnv("TOLERANCE", "3000") + " seconds\n" + text)
+		sendAlert("Warning: " + strconv.FormatFloat(qtd, 'f', 0, 64) + " instances terminated before " + TOLERANCE + " seconds\n" + text)
 	}
 }

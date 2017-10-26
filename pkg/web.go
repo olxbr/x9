@@ -1,4 +1,4 @@
-package cmd
+package pkg
 
 import (
 	"encoding/json"
@@ -53,7 +53,7 @@ func Web() {
 		http.ServeFile(w, r, "views/urls.html")
 	})
 
-	port := getOptEnv("SERVICE_PORT", "6969")
+	port := SERVICE_PORT
 	fmt.Printf("listening on %v...\n", port)
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
@@ -63,7 +63,7 @@ func Web() {
 
 func httpSingleKey(w http.ResponseWriter, r *http.Request) {
 	rc := redis.NewClient(&redis.Options{
-		Addr:     getOptEnv("REDIS_SERVER", "localhost:6379"),
+		Addr:     REDIS_SERVER,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
@@ -193,7 +193,7 @@ func httpRoute(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rc := redis.NewClient(&redis.Options{
-		Addr:     getOptEnv("REDIS_SERVER", "localhost:6379"),
+		Addr:     REDIS_SERVER,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
