@@ -3,11 +3,12 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/go-redis/redis"
 	"net/http"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/go-redis/redis"
 )
 
 // Web will start the Web Server and keeps listen for requests.
