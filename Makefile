@@ -12,9 +12,6 @@ install:
 docker_build:
 	docker-compose build
 
-docker_tag:
-	docker_build
-
 docker_run:
 	docker-compose up -d
 
