@@ -76,15 +76,11 @@ $ make build
 ```
 
 # How to build it and run in Docker
-```
-$ make docker_image DOCKER_REPO="myrepo"
-$ docker run -d -n redis redis
-$ docker run -p 6969:6969 \
--e REDIS_SERVER=redis:6379 \
--e AWS_ACCESS_KEY_ID=XXX \
--e AWS_SECRET_ACCESS_KEY="XXX" \
--e SLACK_WEBHOOK_URL="https://myslack...." \
-myrepo/x9
+```bash
+$ EXPORT AWS_ACCESS_KEY_ID=XXX
+$ EXPORT AWS_SECRET_ACCESS_KEY="XXX"
+$ EXPORT SLACK_WEBHOOK_URL="https://myslack...."
+$ make docker_run
 $ curl localhost:6969/api
 ```
 
@@ -100,7 +96,8 @@ $ curl localhost:6969/api
 |ALERT_TIMEFRAME|1200|Interval between checks|
 |SERVICE_PORT|6969|Webserver port|
 |REGIONS|"sa-east-1,us-east-1"|Regions were to run "describe-instances"|
-
+|DOCKER_IMAGE_VERSION|latest|Version that will be used to tag the final image|
+|DOCKER_REPO|myrepo|Repository that will be used to tag the final image|
 
 # API reference
 
