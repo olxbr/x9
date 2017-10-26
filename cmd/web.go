@@ -91,7 +91,7 @@ func httpSingleKey(w http.ResponseWriter, r *http.Request) {
 		w.Header()["Access-Control-Allow-Origin"] = []string{"*"}
 		w.Header()["Content-Type"] = []string{"application/json"}
 	} else {
-		fmt.Fprintf(w, "<table>")
+		fmt.Fprint(w, "<table>")
 	}
 
 	var members []string
@@ -138,9 +138,9 @@ func httpSingleKey(w http.ResponseWriter, r *http.Request) {
 			jsonout, _ = json.Marshal(jsonmap)
 		}
 		jsonread = string(jsonout[:])
-		fmt.Fprintf(w, jsonread)
+		fmt.Fprint(w, jsonread)
 	} else {
-		fmt.Fprintf(w, "</table>")
+		fmt.Fprint(w, "</table>")
 	}
 }
 
@@ -205,7 +205,7 @@ func httpRoute(w http.ResponseWriter, r *http.Request) {
 		w.Header()["Access-Control-Allow-Origin"] = []string{"*"}
 		w.Header()["Content-Type"] = []string{"application/json"}
 	} else {
-		fmt.Fprintf(w, "<table>")
+		fmt.Fprint(w, "<table>")
 	}
 
 	keys, _ := rc.Keys(prefix).Result()
@@ -240,8 +240,8 @@ func httpRoute(w http.ResponseWriter, r *http.Request) {
 	if isJson {
 		jsonout, _ := json.Marshal(jsonmap)
 		jsonread := string(jsonout[:])
-		fmt.Fprintf(w, jsonread)
+		fmt.Fprint(w, jsonread)
 	} else {
-		fmt.Fprintf(w, "</table>")
+		fmt.Fprint(w, "</table>")
 	}
 }
