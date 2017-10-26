@@ -6,8 +6,8 @@ import (
 	"github.com/go-redis/redis"
 	"net/http"
 	"strconv"
-	"time"
 	"strings"
+	"time"
 )
 
 func sendAlert(messageJson string) {
