@@ -5,25 +5,21 @@ machine:
 dependencies:
   override:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - make docker_build
+    - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=master make docker_build
 
 deployment:
   master:
     branch: master
     commands:
-      - make docker_image
-      - make docker_tag DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=master
-      - make docker_push DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=master
+      - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=master make docker_build
   hub:
     tag: /^v[0-9]+\.[0-9]+\.[0-9]+-(alpha|beta|rc)(\.[0-9])*$/
     commands:
-      - make docker_image
-      - make docker_tag DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG
-      - make docker_push DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG
+      - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG make docker_build
+      - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG make docker_push
   stable:
     tag: /^v[0-9]+\.[0-9]+\.[0-9]+$/
     commands:
-      - make docker_image
-      - make docker_tag DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG
-      - make docker_push DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG
-      - make docker_push DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=latest
+      - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG make docker_build
+      - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=$CIRCLE_TAG make docker_push
+      - DOCKER_REPO=$DOCKER_REPO DOCKER_IMAGE_VERSION=latest make docker_push
