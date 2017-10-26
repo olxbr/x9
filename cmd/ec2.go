@@ -245,21 +245,21 @@ func getInstances() {
 					last24Hours = true
 				}
 
-				current[InstanceId] = (&Instance{
-					Region:          awsRegion,
-					Env:             Env,
-					App:             App,
-					Product:         Product,
-					isSpot:          isSpot,
-					Type:            InstanceType,
-					Expires:         inst.LaunchTime.Unix(),
-					Status:          status,
-					isWasted:        isWasted,
-					last24Hours:     last24Hours,
-					lastFrameWasted: lastFrameWasted,
-					isASG:           isASG,
-					Asg:             Asg,
-				})
+				current[InstanceId] = &Instance{
+									Region:          awsRegion,
+									Env:             Env,
+									App:             App,
+									Product:         Product,
+									isSpot:          isSpot,
+									Type:            InstanceType,
+									Expires:         inst.LaunchTime.Unix(),
+									Status:          status,
+									isWasted:        isWasted,
+									last24Hours:     last24Hours,
+									lastFrameWasted: lastFrameWasted,
+									isASG:           isASG,
+									Asg:             Asg,
+								}
 
 			}
 		}
