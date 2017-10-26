@@ -1,0 +1,46 @@
+hash: 53c250065090dbd951af106efee8111418e360096da79ca6a579eea17e3c8900
+updated: 2017-10-26T10:58:21.675965486-02:00
+imports:
+- name: github.com/araddon/dateparse
+  version: ca7e753bd149dae747d76fa7d52b20b920f3a814
+- name: github.com/aws/aws-sdk-go
+  version: f426770fd5a4bae6186b280d4af7dca83a4cdef4
+  subpackages:
+  - aws
+  - aws/awserr
+  - aws/awsutil
+  - aws/client
+  - aws/client/metadata
+  - aws/corehandlers
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/credentials/endpointcreds
+  - aws/credentials/stscreds
+  - aws/defaults
+  - aws/ec2metadata
+  - aws/endpoints
+  - aws/request
+  - aws/session
+  - aws/signer/v4
+  - internal/shareddefaults
+  - private/protocol
+  - private/protocol/ec2query
+  - private/protocol/query
+  - private/protocol/query/queryutil
+  - private/protocol/rest
+  - private/protocol/xml/xmlutil
+  - service/ec2
+  - service/sts
+- name: github.com/go-ini/ini
+  version: f384f410798cbe7cdce40eec40b79ed32bb4f1ad
+- name: github.com/go-redis/redis
+  version: 35248155a505a84811be81a2aab1c423317447be
+  subpackages:
+  - internal
+  - internal/consistenthash
+  - internal/hashtag
+  - internal/pool
+  - internal/proto
+- name: github.com/jmespath/go-jmespath
+  version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
+testImports: []
