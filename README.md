@@ -78,7 +78,7 @@ $ make build
 # How to build it and run in Docker
 ```
 $ make docker_image DOCKER_REPO="myrepo"
-$ docker run -d -n redis redis
+$ docker run --name redis -d redis
 $ docker run -p 6969:6969 \
 -e REDIS_SERVER=redis:6379 \
 -e AWS_ACCESS_KEY_ID=XXX \

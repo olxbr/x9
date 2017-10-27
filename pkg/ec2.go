@@ -2,18 +2,20 @@ package pkg
 
 import (
 	"fmt"
-	"github.com/araddon/dateparse"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/go-redis/redis"
 	"log"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/araddon/dateparse"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/go-redis/redis"
 )
 
+// Instance is the object that holds all configurations about a AWS instance.
 type Instance struct {
 	Region          string
 	Env             string
@@ -244,7 +246,7 @@ func getInstances() {
 					last24Hours = true
 				}
 
-				current[InstanceId] = (&Instance{
+				current[InstanceId] = &Instance{
 					Region:          awsRegion,
 					Env:             Env,
 					App:             App,
@@ -258,7 +260,7 @@ func getInstances() {
 					lastFrameWasted: lastFrameWasted,
 					isASG:           isASG,
 					Asg:             Asg,
-				})
+				}
 
 			}
 		}

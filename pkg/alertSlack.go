@@ -3,11 +3,12 @@ package pkg
 import (
 	"bytes"
 	"fmt"
-	"github.com/go-redis/redis"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/go-redis/redis"
 )
 
 func sendAlert(messageJson string) {
