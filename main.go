@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/vivareal/x9/cmd"
+	"github.com/vivareal/x9/pkg"
 )
 
 func main() {
-	cmd.Web()
+	pkg.Init()
 }

@@ -1,4 +1,4 @@
-package cmd
+package pkg
 
 import (
 	"fmt"
@@ -35,7 +35,7 @@ type Instance struct {
 func updateRedis(current map[string]*Instance) {
 	fmt.Printf("%v - [Update redis requested]\n", time.Now())
 	rc := redis.NewClient(&redis.Options{
-		Addr:     getOptEnv("REDIS_SERVER", "localhost:6379"),
+		Addr:     REDIS_SERVER,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
@@ -110,7 +110,7 @@ func updateRedis(current map[string]*Instance) {
 func cleanRedisKeys() {
 	fmt.Printf("%v - [Starting cleaning keys]\n", time.Now())
 	rc := redis.NewClient(&redis.Options{
-		Addr:     getOptEnv("REDIS_SERVER", "localhost:6379"),
+		Addr:     REDIS_SERVER,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
@@ -140,12 +140,12 @@ func getInstances() {
 	fmt.Printf("%v - [Starting get instances]\n", time.Now())
 	t := time.Now().Unix()
 
-	tolerance, _ := strconv.ParseInt(getOptEnv("TOLERANCE", "3000"), 10, 64)
-	alertframe, _ := strconv.ParseInt(getOptEnv("ALERT_TIMEFRAME", "1200"), 10, 64)
+	tolerance, _ := strconv.ParseInt(TOLERANCE, 10, 64)
+	alertframe, _ := strconv.ParseInt(ALERT_TIMEFRAME, 10, 64)
 
 	sess := session.Must(session.NewSession())
 
-	Regions := strings.Split(getOptEnv("REGIONS", "sa-east-1,us-east-1"), ",")
+	Regions := strings.Split(REGIONS, ",")
 	params := &ec2.DescribeInstancesInput{
 	//
 	//	Filters: []*ec2.Filter{
