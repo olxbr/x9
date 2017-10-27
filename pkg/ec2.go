@@ -221,8 +221,8 @@ func getInstances() {
 					if len(datestates) > 0 && len(datestates[0]) > 1 {
 
 						datestate := datestates[0][1]
-							// Example of datestate
-							// `User initiated (2017-07-26 18:55:53 GMT)`
+						// Example of datestate
+						// `User initiated (2017-07-26 18:55:53 GMT)`
 						terminated, err := dateparse.ParseAny(datestate)
 						if err != nil {
 							panic(err.Error())
