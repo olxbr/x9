@@ -55,7 +55,7 @@ $ git clone git@github.com:VivaReal/x9.git
 $ export GOPATH=~/go/
 $ glide install
 $ redis-server &
-$ export SLACK_WEBHOOK_URL="https://myslack...."
+$ export SLACK_BOT_URL="https://myslack...."
 $ go run main.go
 $ curl localhost:6969
 ```
@@ -83,7 +83,7 @@ $ docker run -p 6969:6969 \
 -e REDIS_SERVER=redis:6379 \
 -e AWS_ACCESS_KEY_ID=XXX \
 -e AWS_SECRET_ACCESS_KEY="XXX" \
--e SLACK_WEBHOOK_URL="https://myslack...." \
+-e SLACK_BOT_URL="https://myslack...." \
 myrepo/x9
 $ curl localhost:6969/api
 ```
@@ -94,7 +94,7 @@ $ curl localhost:6969/api
 |---|---|---|
 |AWS_ACCESS_KEY_ID|-|optional, default provided by the aws-cli configuration|
 |AWS_SECRET_ACCESS_KEY|-|optional, default provided by the aws-cli configuration|
-|SLACK_WEBHOOK_URL|error|Slack bot URL|
+|SLACK_BOT_URL|error|Slack bot URL|
 |REDIS_SERVER|localhost:6379|Redis server address and port|
 |TOLERANCE|3000|Minimum amount of time instances must run to not be considered missbehave| 
 |ALERT_TIMEFRAME|1200|Interval between checks|
