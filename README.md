@@ -33,7 +33,7 @@ The data expires in 24 hours.
 
 # Tags
 
-A rudimentary tag support is provide in this first release. You must use the tags bellow.
+A rudimentary tag support is provided in this first release. You must use the tags bellow.
 If don't use tags or different tags, don't worry, they will be show as "none".
 
  |Tag|Description|
