@@ -99,7 +99,7 @@ func updateRedis(current map[string]*Instance) {
 		}
 
 		if instance.PrivateIP != "" {
-			rc.ZIncrBy("tmp_ip", 1, instance.PrivateIP+"-"+instance.Region+"-"+instance.Env+"-"+instance.Product+"-"+instance.Type+"-"+instance.Asg)
+			rc.ZIncrBy("tmp_ip", 1, instance.PrivateIP+"-"+instance.Region+"-"+instance.Env+"-"+instance.Product+"-"+instance.App+"-"+instance.Type+"-"+instance.Asg)
 		}
 	}
 	rc.Rename("tmp_current", "current").Result()
