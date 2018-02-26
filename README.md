@@ -49,8 +49,8 @@ $ # make sure your aws cli is working
 $ brew install go
 $ brew install redis
 $ brew install glide
-$ mkdir ~/go/src/github.com/vivareal
-$ cd ~/go/src/github.com/vivareal
+$ mkdir ~/go/src/github.com/grupozapvivareal
+$ cd ~/go/src/github.com/grupozapvivareal
 $ git clone git@github.com:VivaReal/x9.git
 $ export GOPATH=~/go/
 $ glide install
