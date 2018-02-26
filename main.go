@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/vivareal/x9/pkg"
+	"github.com/grupozapvivareal/x9/pkg"
 )
 
 func main() {

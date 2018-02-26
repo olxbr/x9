@@ -43,6 +43,7 @@ func Web() {
 	http.HandleFunc("/type/wasted/", httpRoute)
 
 	http.HandleFunc("/current/", httpSingleKey)
+	http.HandleFunc("/ip/", httpSingleKey)
 	http.HandleFunc("/json", httpSingleKey)
 	http.HandleFunc("/alerts/", httpSingleKey)
 	http.HandleFunc("/alerts/asg/", httpSingleKey)
@@ -75,6 +76,8 @@ func httpSingleKey(w http.ResponseWriter, r *http.Request) {
 	switch r.RequestURI {
 	case "/current/", "/current/json":
 		prefix = "current"
+	case "/ip/", "/ip/json":
+		prefix = "ip"
 	case "/alerts/", "/alerts/json":
 		prefix = "alertas"
 	case "/alerts/asg/", "/alerts/asg/json":

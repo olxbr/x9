@@ -1,4 +1,4 @@
-package: github.com/vivareal/x9
+package: github.com/grupozapvivareal/x9
 import:
 - package: github.com/araddon/dateparse
 - package: github.com/aws/aws-sdk-go

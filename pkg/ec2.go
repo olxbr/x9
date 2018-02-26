@@ -30,6 +30,7 @@ type Instance struct {
 	lastFrameWasted bool
 	isASG           bool
 	Asg             string
+	PrivateIP       string
 }
 
 func updateRedis(current map[string]*Instance) {
@@ -96,12 +97,18 @@ func updateRedis(current map[string]*Instance) {
 			}
 			rc.ZIncrBy("tmp_alertas", 1, instance.Env+"-"+instance.Product+"-"+instance.App+"-"+asg+instance.Type).Result()
 		}
+
+		if instance.PrivateIP != "" {
+			rc.ZIncrBy("tmp_ip", 1, instance.PrivateIP+"-"+instance.Region+"-"+instance.Env+"-"+instance.Product+"-"+instance.Type+"-"+instance.Asg)
+		}
 	}
 	rc.Rename("tmp_current", "current").Result()
 	rc.Del("alertas").Result()
 	rc.Rename("tmp_alertas", "alertas").Result()
 	rc.Del("alertasasg")
 	rc.Rename("tmp_alertasasg", "alertasasg").Result()
+	rc.Del("ip")
+	rc.Rename("tmp_ip", "ip").Result()
 	cleanRedisKeys()
 
 	fmt.Printf("%v - [Update redis finished]\n", time.Now())
@@ -183,9 +190,16 @@ func getInstances() {
 
 			for _, inst := range reserv.Instances {
 
+				//fmt.Println(inst)
+
 				status := *inst.State.Name
 				InstanceId := *inst.InstanceId
 				InstanceType := *inst.InstanceType
+
+				PrivateIP := ""
+				if inst.PrivateIpAddress != nil {
+					PrivateIP = *inst.PrivateIpAddress
+				}
 
 				isSpot := "0"
 				if inst.InstanceLifecycle != nil && *inst.InstanceLifecycle == "spot" {
@@ -260,6 +274,7 @@ func getInstances() {
 					lastFrameWasted: lastFrameWasted,
 					isASG:           isASG,
 					Asg:             Asg,
+					PrivateIP:       PrivateIP,
 				}
 
 			}
