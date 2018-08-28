@@ -1,0 +1,58 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: x9
+    product: platform
+    tier: frontend
+  name: x9
+  namespace: platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: x9
+      product: platform
+      tier: frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+       iam.amazonaws.com/role: "arn:aws:iam::444914307613:role/qa-platform-x9"
+      labels:
+        app: x9
+        product: platform
+        tier: frontend
+    spec:
+      containers:
+      - env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        - name: REDIS_SERVER
+          value: redis-x9:6379
+        - name: SLACK_BOT_URL
+          valueFrom:
+            secretKeyRef:
+              key: SLACK_BOT_URL
+              name: x9
+        image: vivareal/x9:master
+        imagePullPolicy: Always
+        name: x9
+        ports:
+        - containerPort: 6969
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
