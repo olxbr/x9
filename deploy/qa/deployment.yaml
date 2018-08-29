@@ -3,16 +3,13 @@ kind: Deployment
 metadata:
   labels:
     app: x9
-    product: platform
     tier: frontend
   name: x9
-  namespace: platform
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: x9
-      product: platform
       tier: frontend
   strategy:
     rollingUpdate:
@@ -22,10 +19,9 @@ spec:
   template:
     metadata:
       annotations:
-       iam.amazonaws.com/role: "arn:aws:iam::444914307613:role/qa-platform-x9"
+       iam.amazonaws.com/role: "arn:aws:iam::<aws_account_id>:role/<role_name>"
       labels:
         app: x9
-        product: platform
         tier: frontend
     spec:
       containers:
