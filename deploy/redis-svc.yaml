@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis-x9
+    role: master
+  name: redis-x9
+spec:
+  ports:
+  - port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    app: redis-x9
+    role: master
+  sessionAffinity: None
+  type: ClusterIP

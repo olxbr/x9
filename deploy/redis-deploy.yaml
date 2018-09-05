@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  generation: 1
+  labels:
+    app: redis-x9
+    role: master
+  name: redis-x9
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-x9
+      role: master
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: redis-x9
+        role: master
+    spec:
+      containers:
+      - image: redis:3.2.10-alpine
+        imagePullPolicy: IfNotPresent
+        name: redis-x9
+        ports:
+        - containerPort: 6379
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
