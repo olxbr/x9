@@ -28,7 +28,7 @@ jobs:
           retention-days: 1
 
   push_master_docker:
-#    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     name: Push Docker image with tag master
     needs: build_docker
     runs-on: ubuntu-20.04
@@ -71,7 +71,7 @@ jobs:
           path: /tmp/docker-cache/
       - name: Load Docker image and tag it according to current release
         run: |
-          docker load < /tmp/docker-cache/v9.tar
+          docker load < /tmp/docker-cache/x9.tar
           make docker_tag DOCKER_IMAGE_VERSION=${GITHUB_REF#refs/tags/}
       - uses: docker/login-action@v1
         with:
