@@ -78,6 +78,8 @@ jobs:
       - name: Push Docker image with latest tag if this version is stable
         run: |
           if [[ "${{ github.ref }}" =~ "-(alpha|beta|rc)" ]]; then
+            echo "NOT pushing version ${GITHUB_REF#refs/tags/} as latest"
+          else
             make docker_push DOCKER_IMAGE_VERSION=latest
           fi
 
