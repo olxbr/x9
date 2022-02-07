@@ -35,7 +35,7 @@ spec:
             secretKeyRef:
               key: SLACK_BOT_URL
               name: x9
-        image: vivareal/x9:master
+        image: 073521391622.dkr.ecr.us-east-1.amazonaws.com/x9:master
         imagePullPolicy: Always
         name: x9
         ports:
