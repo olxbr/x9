@@ -19,7 +19,7 @@ jobs:
         run: |
           DOCKER_REPO=vivareal make docker_image
           mkdir -p /tmp/docker-cache
-          docker save -o /tmp/docker-cache/x9.tar ${{ secrets.CONTAINER_REGISTRY_HOST }}/<PUT_THE_BU_AND_TEAM_NAME_HERE>/x9:latest
+          docker save -o /tmp/docker-cache/x9.tar ${{ secrets.CONTAINER_REGISTRY_HOST }}/vivareal/observability/x9:latest
       - name: Cache Docker image for further jobs in this workflow run
         uses: actions/upload-artifact@v2
         with:
